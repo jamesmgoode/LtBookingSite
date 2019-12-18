@@ -1,0 +1,25 @@
+﻿@page "/"
+
+@using LtBookingSite.Models
+@using LtBookingSite.Data
+@inject ApplicationDbContext DbContext
+
+    <h1>Lorien Trust Sanctioned Event Booking</h1>
+
+    <ul>
+        @foreach(var facebookEvent in FacebookEvents)
+        {
+            <li><a href="@facebookEvent.EventLink">@facebookEvent.EventName</a></li>
+        }
+    </ul>
+
+@code {
+    private IEnumerable<FacebookEvent> FacebookEvents { get; set; }
+
+    protected override Task OnInitializedAsync()
+    {
+        FacebookEvents = DbContext.FacebookEvents.ToList();
+
+        return base.OnInitializedAsync();
+    }
+}
