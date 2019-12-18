@@ -4,6 +4,10 @@ namespace LtBookingSite.Models
 {
     public class MedicalDetails
     {
+        [Key]
+        [Required]
+        public int MedicalDetailsId { get; set; }
+
         [Required]
         public string EmergencyContactName { get; set; }
         

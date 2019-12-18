@@ -1,16 +1,45 @@
 ﻿@page "/PlayerDetails"
+@attribute [Authorize]
 
-<AuthorizeView>
-    <Authorized>
-        <h1>You are logged in</h1>
-    </Authorized>
-    <NotAuthorized>
-        <h1>You are not logged in</h1>
-    </NotAuthorized>
-</AuthorizeView>
+@using LtBookingSite.Models
+@using LtBookingSite.Data
+@using LtBookingSite.Areas.Identity
+@using Microsoft.AspNetCore.Identity
+@inject ApplicationDbContext DbContext
+@inject AuthenticationStateProvider auth
+
+<h1>Player Details</h1>
+
+<p>@Player.FirstName</p>
+
+
+
 
 @code {
+    private Player Player { get; set; }
 
+    protected override Task OnInitializedAsync()
+    {
+        var user = auth.GetAuthenticationStateAsync().Result.User;
+        var email = user.Identity.Name;
 
+        var player = DbContext.Players.Find(email);
 
+        if(player == null)
+        {
+            Player = new Player
+            {
+                FirstName = "New Player"
+            };
+        }
+        else
+        {
+            Player = new Player
+            {
+                FirstName = player.FirstName
+            };
+        }
+
+        return base.OnInitializedAsync();
+    }
 }
