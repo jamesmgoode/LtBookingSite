@@ -3,43 +3,47 @@
 
 @using LtBookingSite.Models
 @using LtBookingSite.Data
-@using LtBookingSite.Areas.Identity
-@using Microsoft.AspNetCore.Identity
-@inject ApplicationDbContext DbContext
-@inject AuthenticationStateProvider auth
+@inject ApplicationDbContext dbContext
+@inject AuthenticationStateProvider authenticationStateProvider
 
 <h1>Player Details</h1>
 
-<p>@Player.FirstName</p>
+<EditForm Model=@PlayerDetailsViewModel OnValidSubmit="@HandleValidSubmit">
+    <div class="form-group row">
+        <label for="FirstName" class="col-md-2">First Name</label>
+        <InputText id="FirstName" @bind-Value="PlayerDetailsViewModel.FirstName" class="form-control col-md-4">@PlayerDetailsViewModel.FirstName</InputText>
+    </div>
 
-
-
+    <button type="submit">Submit</button>
+</EditForm>
 
 @code {
-    private Player Player { get; set; }
+    private PlayerDetailsViewModel PlayerDetailsViewModel { get; set; }
 
     protected override Task OnInitializedAsync()
     {
-        var user = auth.GetAuthenticationStateAsync().Result.User;
+        var user = authenticationStateProvider.GetAuthenticationStateAsync().Result.User;
         var email = user.Identity.Name;
 
-        var player = DbContext.Players.Find(email);
+        var player = dbContext.Players.Find(email);
 
         if(player == null)
         {
-            Player = new Player
-            {
-                FirstName = "New Player"
-            };
+            PlayerDetailsViewModel = new PlayerDetailsViewModel();
         }
         else
         {
-            Player = new Player
+            PlayerDetailsViewModel = new PlayerDetailsViewModel
             {
                 FirstName = player.FirstName
             };
         }
 
         return base.OnInitializedAsync();
+    }
+
+    private void HandleValidSubmit()
+    {
+        Console.WriteLine(PlayerDetailsViewModel.FirstName);
     }
 }
