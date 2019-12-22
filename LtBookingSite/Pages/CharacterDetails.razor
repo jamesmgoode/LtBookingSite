@@ -1,8 +1,13 @@
 ﻿@page "/CharacterDetails"
 @attribute [Authorize]
 
+@using LtBookingSite.Data
+@inject AuthenticationStateProvider authenticationStateProvider
+@inject CharacterDetailsHelper characterDetailsHelper
 
 <h3>CharacterDetails</h3>
+
+
 
 @code {
 

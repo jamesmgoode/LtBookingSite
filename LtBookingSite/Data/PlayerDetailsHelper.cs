@@ -1,4 +1,5 @@
 ﻿using LtBookingSite.Models;
+using LtBookingSite.Models.ViewModels;
 
 namespace LtBookingSite.Data
 {
