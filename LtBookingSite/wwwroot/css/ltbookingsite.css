@@ -3,3 +3,19 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+.player-details-form {
+    margin: 25px;
+}
+
+.submit-message {
+    margin-top: 25px;
+}
+
+.show-submit-message {
+    visibility: visible;
+}
+
+.hide-submit-message {
+    visibility: hidden;
+}
