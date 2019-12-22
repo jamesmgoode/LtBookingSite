@@ -1,24 +1,24 @@
 ﻿@page "/"
 
-@using LtBookingSite.Models
+@using LtBookingSite.Models.ViewModels
 @using LtBookingSite.Data
-@inject ApplicationDbContext DbContext
+@inject IEventHelper eventHelper
 
     <h1>Lorien Trust Sanctioned Event Booking</h1>
 
     <ul class="event-list">
-        @foreach(var facebookEvent in FacebookEvents)
+        @foreach(var eventLink in EventLinks)
         {
-            <li><a href="@facebookEvent.EventLink" target="_blank">@facebookEvent.EventName</a></li>
+            <li><a href="@eventLink.EventLink" target="_blank"><b>@eventLink.EventName:</b> @eventLink.DisplayDate</a></li>
         }
     </ul>
 
 @code {
-    private IEnumerable<FacebookEvent> FacebookEvents { get; set; }
+    private IEnumerable<EventLinkViewModel> EventLinks { get; set; }
 
     protected override Task OnInitializedAsync()
     {
-        FacebookEvents = DbContext.FacebookEvents.ToList();
+        EventLinks = eventHelper.GetEventLinks();
 
         return base.OnInitializedAsync();
     }
