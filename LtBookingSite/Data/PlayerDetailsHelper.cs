@@ -3,7 +3,7 @@ using LtBookingSite.Models.ViewModels;
 
 namespace LtBookingSite.Data
 {
-    public class PlayerDetailsHelper
+    public class PlayerDetailsHelper : IPlayerDetailsHelper
     {
         private readonly ApplicationDbContext _applicationDbContext;
 

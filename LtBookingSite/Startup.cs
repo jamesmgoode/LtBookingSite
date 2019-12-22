@@ -32,8 +32,8 @@ namespace LtBookingSite
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
-            services.AddTransient<PlayerDetailsHelper>();
-            services.AddTransient<CharacterDetailsHelper>();
+            services.AddTransient<IPlayerDetailsHelper, PlayerDetailsHelper>();
+            services.AddTransient<ICharacterDetailsHelper, CharacterDetailsHelper>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

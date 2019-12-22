@@ -11,6 +11,8 @@ namespace LtBookingSite.Models
 
         // Add CSs
 
-        // Add list of Osps
+        // Add Osps
+
+        // Add lammies/special creatures
     }
 }

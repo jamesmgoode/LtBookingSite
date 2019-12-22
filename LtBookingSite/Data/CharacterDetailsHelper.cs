@@ -1,11 +1,12 @@
-﻿using System;
+﻿using LtBookingSite.Models.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace LtBookingSite.Data
 {
-    public class CharacterDetailsHelper
+    public class CharacterDetailsHelper : ICharacterDetailsHelper
     {
         private readonly ApplicationDbContext _applicationDbContext;
 
@@ -14,6 +15,14 @@ namespace LtBookingSite.Data
             _applicationDbContext = applicationDbContext;
         }
 
+        public CharacterDetailsViewModel GetCharacterDetailsViewModel(string email)
+        {
+            throw new NotImplementedException();
+        }
 
+        public void SaveCharacterDetails(string email, CharacterDetailsViewModel characterDetailsViewModel)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
