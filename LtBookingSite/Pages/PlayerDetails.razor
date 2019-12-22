@@ -1,10 +1,10 @@
 ﻿@page "/PlayerDetails"
 @attribute [Authorize]
 
-@using LtBookingSite.Models
+@using LtBookingSite.Models.ViewModels
 @using LtBookingSite.Data
 @inject AuthenticationStateProvider authenticationStateProvider
-@inject PlayerDetailsHelper playerDetailsHelper
+@inject IPlayerDetailsHelper playerDetailsHelper
 
 <h1>Player Details</h1>
 

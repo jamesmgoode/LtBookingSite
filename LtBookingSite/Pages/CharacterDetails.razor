@@ -1,9 +1,43 @@
 ﻿@page "/CharacterDetails"
 @attribute [Authorize]
 
+@using LtBookingSite.Models.ViewModels
+@using LtBookingSite.Data
+@inject AuthenticationStateProvider authenticationStateProvider
+@inject ICharacterDetailsHelper characterDetailsHelper
 
-<h3>CharacterDetails</h3>
+<h3>Character Details</h3>
+
+<!--Add basic fields-->
+
+<!--Add CSs-->
+
+<!--Add OSPs-->
+
+<!--Add lammies/special creature-->
 
 @code {
+    private CharacterDetailsViewModel CharacterDetailsViewModel { get; set; }
 
+    private string SubmitMessageVisibility { get; set; } = "hide-submit-message";
+
+    protected override Task OnInitializedAsync()
+    {
+        var user = authenticationStateProvider.GetAuthenticationStateAsync().Result.User;
+        var email = user.Identity.Name;
+
+        CharacterDetailsViewModel = characterDetailsHelper.GetCharacterDetailsViewModel(email);
+
+        return base.OnInitializedAsync();
+    }
+
+    private void HandleValidSubmit()
+    {
+        var user = authenticationStateProvider.GetAuthenticationStateAsync().Result.User;
+        var email = user.Identity.Name;
+
+        characterDetailsHelper.SaveCharacterDetails(email, CharacterDetailsViewModel);
+
+        SubmitMessageVisibility = "show-submit-message";
+    }
 }
