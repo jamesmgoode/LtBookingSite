@@ -34,6 +34,7 @@ namespace LtBookingSite
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
             services.AddTransient<IPlayerDetailsHelper, PlayerDetailsHelper>();
             services.AddTransient<ICharacterDetailsHelper, CharacterDetailsHelper>();
+            services.AddTransient<IEventHelper, EventHelper>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

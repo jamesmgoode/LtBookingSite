@@ -16,5 +16,7 @@ namespace LtBookingSite.Data
         public DbSet<Player> Players { get; set; }
 
         public DbSet<MedicalDetails> MedicalDetails { get; set; }
+
+        public DbSet<Event> Events { get; set; }
     }
 }
