@@ -6,10 +6,10 @@
 
     <h1>Lorien Trust Sanctioned Event Booking</h1>
 
-    <ul>
+    <ul class="event-list">
         @foreach(var facebookEvent in FacebookEvents)
         {
-            <li><a href="@facebookEvent.EventLink">@facebookEvent.EventName</a></li>
+            <li><a href="@facebookEvent.EventLink" target="_blank">@facebookEvent.EventName</a></li>
         }
     </ul>
 
