@@ -19,7 +19,14 @@ namespace LtBookingSite.Models.ViewModels
         {
             get
             {
-                return StartDate.Value.ToString("dd/MM/yy");
+                var displayDate = StartDate.Value.ToString("dd/MM/yy HH:mm");
+
+                if (EndDate.HasValue)
+                {
+                    displayDate += " - " + EndDate.Value.ToString("dd/MM/yy HH:mm");
+                }
+
+                return displayDate;
             }
         }
     }
