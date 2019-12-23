@@ -6,15 +6,21 @@
 @inject AuthenticationStateProvider authenticationStateProvider
 @inject ICharacterDetailsHelper characterDetailsHelper
 
-<h3>Character Details</h3>
+<h1>Character Details</h1>
 
-<!--Add basic fields-->
+<EditForm Model="@CharacterDetailsViewModel" OnValidSubmit="@HandleValidSubmit" class="character-details-form">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
 
-<!--Add CSs-->
-
-<!--Add OSPs-->
-
-<!--Add lammies/special creature-->
+    <div class="form-group row">
+        <label for="CharacterName" class="col-md-2">Character Name</label>
+        <InputText id="CharacterName" @bind-Value="CharacterDetailsViewModel.CharacterName" class="form-control col-md-4">@CharacterDetailsViewModel.CharacterName</InputText>
+    </div>
+    <!--Add basic fields-->
+    <!--Add CSs-->
+    <!--Add OSPs-->
+    <!--Add lammies/special creature-->
+</EditForm>
 
 @code {
     private CharacterDetailsViewModel CharacterDetailsViewModel { get; set; }
