@@ -13,6 +13,7 @@ namespace LtBookingSite.Models
 
         // Add basic fields
         [Required]
+        [StringLength(50)]
         public string CharacterName { get; set; }
 
         // Add CSs
