@@ -11,11 +11,11 @@ namespace LtBookingSite.Data
         {
         }
 
-        public DbSet<FacebookEvent> FacebookEvents { get; set; }
-
         public DbSet<Player> Players { get; set; }
 
         public DbSet<MedicalDetails> MedicalDetails { get; set; }
+
+        public DbSet<Character> Characters { get; set; }
 
         public DbSet<Event> Events { get; set; }
     }
