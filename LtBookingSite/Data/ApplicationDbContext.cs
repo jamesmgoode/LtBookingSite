@@ -18,5 +18,7 @@ namespace LtBookingSite.Data
         public DbSet<Character> Characters { get; set; }
 
         public DbSet<Event> Events { get; set; }
+
+        public DbSet<CharacterSkill> CharacterSkills { get; set; }
     }
 }
