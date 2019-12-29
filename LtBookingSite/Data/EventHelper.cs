@@ -17,7 +17,7 @@ namespace LtBookingSite.Data
         {
             var eventLinks = new List<EventLinkViewModel>();
 
-            foreach (var eventDetails in _applicationDbContext.Events.ToList().OrderBy(e => e.StartDate).ThenBy(e => e.EventName))
+            foreach (var eventDetails in _applicationDbContext.Events.OrderBy(e => e.StartDate).ThenBy(e => e.EventName).ToList())
             {
                 eventLinks.Add(new EventLinkViewModel
                 {

@@ -11,6 +11,7 @@ namespace LtBookingSite.Models
         [Required]
         public string Name { get; set; }
 
+        [Required]
         public string Description { get; set; }
 
         [Required]
